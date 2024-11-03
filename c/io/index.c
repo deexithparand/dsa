@@ -1,6 +1,6 @@
 // ANSI to ISO
 #include<stdio.h> 
-#include<unistd.h>
+#include<unistd.h> // POSIX Header, this is the one which provides API to do OS level tasks like `write` 
 
 void useprintf(void){
     int a = 10;
@@ -34,6 +34,7 @@ void usesyscallwrite(void){
     printf("str_length : %d\n",str_length);
     printf("arr_str_length : %d\n",arr_str_length);
 
+    // file descriptor, character array, length of character array
     write(1,str,str_length);
     write(1,arr_str,str_length);
 }
@@ -41,6 +42,6 @@ void usesyscallwrite(void){
 int main(void){
     useprintf();
     useputs(); // attaches the \n automatically at the last
-    usesyscallwrite();
+    usesyscallwrite(); // implementation of stdout using POSIX API function
     return 0;
 }

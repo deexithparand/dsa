@@ -72,4 +72,50 @@ int main(void){
     return 0;
 }
 
-// this code proved CLAUDE is Wrong
+// this code proved CLAUDE is Wrong ... 
+
+// explanation on the results
+
+/*
+
+deexith@admins-MacBook-Air string-length % ./a.out
+Result -> len 1 : 6, len 2 : 6, len 3 : 6
+Result -> len 1 : 6, len 2 : 6, len 3 : 6
+Result -> len 1 : 6, len 2 : 6, len 3 : 6
+exectuion time 1 : 0.000033
+exectuion time 2 : 0.000005
+exectuion time 3 : 0.000004
+
+*/
+
+/*
+
+// get_len1 (Slowest)
+int get_len1(const char *str_pointer){
+    int len = 0;
+    while(*(str_pointer + len) != '\0'){  // Each iteration requires:
+        len++;                            // 1. Addition (str_pointer + len)
+    }                                     // 2. Dereferencing
+    return len;                           // 3. Increment len
+}                                         // More arithmetic operations per iteration
+
+// get_len2 (Fast)
+int get_len2(const char *str_pointer){
+    const char *temp_pointer = str_pointer;
+    while(*temp_pointer != '\0'){         // Each iteration only needs:
+        temp_pointer++;                   // 1. Dereferencing
+    }                                     // 2. Simple pointer increment
+    return temp_pointer - str_pointer;    // One final subtraction
+}
+
+// get_len3 (Marginally Fastest)
+int get_len3(const char *str_pointer){
+    int len = 0;
+    while(*str_pointer != '\0'){          // Similar to get_len2 but:
+        str_pointer++;                    // - No final pointer arithmetic
+        len++;                            // - Direct length tracking
+    }
+    return len;
+}
+
+*/
